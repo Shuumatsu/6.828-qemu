@@ -1,3 +1,20 @@
 Read the documentation in qemu-doc.html or on http://wiki.qemu-project.org
 
 - QEMU team
+
+---
+
+errors on manjaro:
+
+```
+/usr/bin/ld: qga/commands-posix.o: in function `dev_major_minor':
+/home/curry/workspace/6.828-qemu/qga/commands-posix.c:633: undefined reference to `major'
+/usr/bin/ld: /home/curry/workspace/6.828-qemu/qga/commands-posix.c:634: undefined reference to `minor'
+collect2: error: ld returned 1 exit status
+make: *** [Makefile:288: qemu-ga] Error 1
+```
+
+FIX:
+- add `#include <sys/sysmacros.h>` at the beginning of qga/commands-posix.c
+- add `#include <sys/sysmacros.h>` at the beginning of hw/9pfs/virtio-9p.c
+

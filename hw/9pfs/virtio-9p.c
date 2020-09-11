@@ -1,3 +1,5 @@
+#include <sys/sysmacros.h>
+
 /*
  * Virtio 9p backend
  *
